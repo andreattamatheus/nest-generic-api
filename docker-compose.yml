@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+    app:
+        container_name: api-frontend
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ".:/app"
+        ports:
+            - "3002:3000"
+            - "5555:5555"
+        environment:
+            - NODE_ENV=development
+    db:
+        container_name: api-database
+        image: postgres
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
